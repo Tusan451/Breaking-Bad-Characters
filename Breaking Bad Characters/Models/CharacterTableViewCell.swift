@@ -12,12 +12,18 @@ class CharacterTableViewCell: UITableViewCell {
     @IBOutlet var characterName: UILabel!
     @IBOutlet var characterNickname: UILabel!
     @IBOutlet var characterImage: UIImageView!
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func configure(with character: CharacterInfo) {
+        characterName.text = character.name
+        characterNickname.text = character.nickname
+        
+        DispatchQueue.global().async {
+            guard let imageUrl = URL(string: character.img) else { return }
+            guard let imageData = try? Data(contentsOf: imageUrl) else { return }
+            
+            DispatchQueue.main.async {
+                self.characterImage.image = UIImage(data: imageData)
+            }
+        }
     }
-
 }

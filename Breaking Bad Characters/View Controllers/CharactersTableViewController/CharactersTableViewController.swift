@@ -9,12 +9,13 @@ import UIKit
 
 class CharactersTableViewController: UITableViewController {
 
-    private let cellId = "characterCell"
-    let jsonUrl = "https://www.breakingbadapi.com/api/characters"
-    var characters = [CharacterInfo]()
+    private let cellId = "CharacterTableViewCell"
+    let jsonUrl = "https://www.breakingbadapi.com/api/characters/1"
+    var characters: [CharacterInfo] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchData()
     }
 
     // MARK: - Table view data source
@@ -24,11 +25,17 @@ class CharactersTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! CharacterTableViewCell
+        
+        let character = characters[indexPath.row]
+        cell.configure(with: character)
 
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+    }
     
 
     /*
