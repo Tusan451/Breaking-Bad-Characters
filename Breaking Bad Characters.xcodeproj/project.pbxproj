@@ -54,8 +54,9 @@
 		E0C985FC28C35D620067329E /* Breaking Bad Characters */ = {
 			isa = PBXGroup;
 			children = (
+				E0C9861428C367D60067329E /* View Controllers */,
 				E0C9861128C35D860067329E /* App */,
-				E0C9861228C35DA00067329E /* StoryBoards */,
+				E0C9861228C35DA00067329E /* Story Boards */,
 				E0C9861328C35DAC0067329E /* Resources */,
 			);
 			path = "Breaking Bad Characters";
@@ -71,13 +72,13 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		E0C9861228C35DA00067329E /* StoryBoards */ = {
+		E0C9861228C35DA00067329E /* Story Boards */ = {
 			isa = PBXGroup;
 			children = (
 				E0C9860328C35D620067329E /* Main.storyboard */,
 				E0C9860828C35D630067329E /* LaunchScreen.storyboard */,
 			);
-			path = StoryBoards;
+			path = "Story Boards";
 			sourceTree = "<group>";
 		};
 		E0C9861328C35DAC0067329E /* Resources */ = {
@@ -86,6 +87,13 @@
 				E0C9860628C35D630067329E /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		E0C9861428C367D60067329E /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
