@@ -10,7 +10,8 @@ import UIKit
 class CharactersTableViewController: UITableViewController {
 
     private let cellId = "characterCell"
-    private let jsonUrl = "https://www.breakingbadapi.com/api/characters"
+    let jsonUrl = "https://www.breakingbadapi.com/api/characters"
+    var characters = [CharacterInfo]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,16 +20,16 @@ class CharactersTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return characters.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
-
         return cell
     }
+    
+    
 
     /*
     // MARK: - Navigation
