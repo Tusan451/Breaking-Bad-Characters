@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.15277778771188522" green="0.15277778771188522" blue="0.15277778771188522" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="characterCell" rowHeight="150" id="vKI-80-O9W">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="characterCell" rowHeight="150" id="vKI-80-O9W" customClass="CharacterTableViewCell" customModule="Breaking_Bad_Characters" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vKI-80-O9W" id="hyV-Hm-PJ6">
@@ -49,10 +49,19 @@
                                             <color key="textColor" systemColor="systemOrangeColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="phC-Sk-PGO">
+                                            <rect key="frame" x="62" y="52" width="45" height="46"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="45" id="pL0-Wg-Shh"/>
+                                                <constraint firstAttribute="height" constant="46" id="z3D-HU-dvp"/>
+                                            </constraints>
+                                        </activityIndicatorView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="phC-Sk-PGO" firstAttribute="centerY" secondItem="hyV-Hm-PJ6" secondAttribute="centerY" id="4U2-s9-ZRH"/>
                                         <constraint firstItem="CJN-Mp-PDc" firstAttribute="leading" secondItem="3sO-k5-j8g" secondAttribute="trailing" constant="16" id="926-E1-UsJ"/>
                                         <constraint firstItem="X7u-J3-8Bq" firstAttribute="leading" secondItem="3sO-k5-j8g" secondAttribute="trailing" constant="16" id="C6L-C5-Qea"/>
+                                        <constraint firstItem="phC-Sk-PGO" firstAttribute="leading" secondItem="hyV-Hm-PJ6" secondAttribute="leadingMargin" constant="42" id="DM9-bu-PdO"/>
                                         <constraint firstItem="3sO-k5-j8g" firstAttribute="top" secondItem="hyV-Hm-PJ6" secondAttribute="topMargin" id="K3Q-Ho-Prj"/>
                                         <constraint firstItem="X7u-J3-8Bq" firstAttribute="top" secondItem="CJN-Mp-PDc" secondAttribute="bottom" constant="12" id="KuM-0a-rUE"/>
                                         <constraint firstItem="3sO-k5-j8g" firstAttribute="leading" secondItem="hyV-Hm-PJ6" secondAttribute="leadingMargin" id="Nii-gs-7Cz"/>
@@ -64,6 +73,10 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.15294116739999999" green="0.15294116739999999" blue="0.15294116739999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
+                                    <outlet property="activityIndicator" destination="phC-Sk-PGO" id="0w4-RD-QZ5"/>
+                                    <outlet property="characterImage" destination="3sO-k5-j8g" id="KQ7-5L-f66"/>
+                                    <outlet property="characterName" destination="CJN-Mp-PDc" id="rtw-VD-FF5"/>
+                                    <outlet property="characterNickname" destination="X7u-J3-8Bq" id="Vys-NG-WFH"/>
                                     <segue destination="0Di-xQ-uwP" kind="show" id="20P-C3-Q66"/>
                                 </connections>
                             </tableViewCell>
@@ -99,6 +112,13 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="npg-dh-ips">
+                                <rect key="frame" x="181.5" y="255" width="51" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="5I7-0f-q1B"/>
+                                    <constraint firstAttribute="width" constant="51" id="R9X-l1-V2D"/>
+                                </constraints>
+                            </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Character Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NnF-lh-7Yq">
                                 <rect key="frame" x="92" y="478" width="230" height="29"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
@@ -149,11 +169,13 @@
                             <constraint firstItem="3yC-r6-cBE" firstAttribute="leading" secondItem="6oe-z5-uJQ" secondAttribute="leading" constant="57" id="Kul-2g-kyB"/>
                             <constraint firstItem="ayB-8g-ILp" firstAttribute="centerX" secondItem="kNP-dJ-qlF" secondAttribute="centerX" id="WjN-wP-FTd"/>
                             <constraint firstItem="6oe-z5-uJQ" firstAttribute="trailing" secondItem="g1m-U7-8qj" secondAttribute="trailing" constant="57" id="asp-Nm-P4V"/>
+                            <constraint firstItem="npg-dh-ips" firstAttribute="centerX" secondItem="kNP-dJ-qlF" secondAttribute="centerX" id="dwP-Bv-Rgg"/>
                             <constraint firstItem="NnF-lh-7Yq" firstAttribute="top" secondItem="ayB-8g-ILp" secondAttribute="bottom" constant="24" id="ejN-nN-okM"/>
                             <constraint firstItem="6oe-z5-uJQ" firstAttribute="trailing" secondItem="pCw-5v-WAr" secondAttribute="trailing" constant="57" id="f13-TB-xQI"/>
                             <constraint firstItem="g1m-U7-8qj" firstAttribute="top" secondItem="pCw-5v-WAr" secondAttribute="bottom" constant="16" id="hm8-rb-xXV"/>
                             <constraint firstItem="pCw-5v-WAr" firstAttribute="top" secondItem="9P7-Eo-aYU" secondAttribute="bottom" constant="24" id="i6y-wL-dds"/>
                             <constraint firstItem="3yC-r6-cBE" firstAttribute="top" secondItem="9P7-Eo-aYU" secondAttribute="bottom" constant="24" id="kHb-LM-FlT"/>
+                            <constraint firstItem="npg-dh-ips" firstAttribute="top" secondItem="6oe-z5-uJQ" secondAttribute="top" constant="167" id="tlf-Ah-j0F"/>
                             <constraint firstItem="9P7-Eo-aYU" firstAttribute="top" secondItem="NnF-lh-7Yq" secondAttribute="bottom" constant="12" id="x3T-0j-tDW"/>
                         </constraints>
                     </view>
